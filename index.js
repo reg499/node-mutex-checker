@@ -1,4 +1,3 @@
-// index.js
 const mutexControl = require("./build/Release/mutex_control");
 
 /**
