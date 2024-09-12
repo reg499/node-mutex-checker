@@ -1,7 +1,7 @@
 # [node-mutex-checker](https://www.npmjs.com/package/node-mutex-checker)
-
-- npm i node-mutex-checker
-
+```bash
+npm i node-mutex-checker
+```
 ## Usage 
 ```javascript
 const { checkMutex } = require("node-mutex-checker");
