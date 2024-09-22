@@ -1,11 +1,24 @@
 {
   "name": "node-mutex-checker",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.1.0",
+  "description": "A Node.js addon to check and create mutexes on Windows systems using C++ bindings.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./example/test.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reg499/node-mutex-checker.git"
+  },
+  "keywords": [
+    "mutex",
+    "windows",
+    "system",
+    "nodejs-addon",
+    "c++"
+  ],
+  "author": "reg499",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {}
 }

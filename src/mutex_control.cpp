@@ -14,8 +14,27 @@ void CheckMutex(const v8::FunctionCallbackInfo<v8::Value>& args) {
     }
 }
 
+void CreateNewMutex(const v8::FunctionCallbackInfo<v8::Value>& args) {
+    v8::Isolate* isolate = args.GetIsolate();
+    v8::String::Utf8Value mutexName(isolate, args[0]);
+
+    HANDLE hMutex = CreateMutex(NULL, FALSE, *mutexName);
+    
+    if (hMutex) {
+        if (GetLastError() == ERROR_ALREADY_EXISTS) {
+            CloseHandle(hMutex);
+            args.GetReturnValue().Set(v8::Boolean::New(isolate, false));
+        } else {
+            args.GetReturnValue().Set(v8::Boolean::New(isolate, true));
+        }
+    } else {
+        args.GetReturnValue().Set(v8::Boolean::New(isolate, false));
+    }
+}
+
 void Initialize(v8::Local<v8::Object> exports) {
     NODE_SET_METHOD(exports, "checkMutex", CheckMutex);
+    NODE_SET_METHOD(exports, "createMutex", CreateNewMutex);
 }
 
 NODE_MODULE(NODE_GYP_MODULE_NAME, Initialize)
